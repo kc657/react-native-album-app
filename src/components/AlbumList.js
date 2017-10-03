@@ -3,27 +3,27 @@ import {ScrollView} from 'react-native'
 import AlbumDetail from './AlbumDetail'
 
 class AlbumList extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       albums: []
     }
   }
 
-  componentWillMount() {
+  componentWillMount () {
     fetch('https://rallycoding.herokuapp.com/api/music_albums')
     .then(response => response.json())
-    .then(responseData => this.setState({albums:responseData}))
+    .then(responseData => this.setState({albums: responseData}))
   }
 
-  renderAlbums() {
+  renderAlbums () {
     return this.state.albums.map(album =>
       <AlbumDetail key={album.title} album={album} />
     )
   }
 
-  render() {
-    console.log(this.state.albums);
+  render () {
+    console.log(this.state.albums)
     return (
       <ScrollView>
         {this.renderAlbums()}
